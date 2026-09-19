@@ -1,0 +1,25 @@
+[Unit]
+Description=DIA to EPUB converter (web UI)
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=dia2epub
+Group=dia2epub
+WorkingDirectory=/opt/dia2epub
+EnvironmentFile=-/etc/dia2epub.env
+ExecStart=/opt/dia2epub/venv/bin/python /opt/dia2epub/dia2epub.py --serve --host 127.0.0.1 --port 8765
+Restart=on-failure
+RestartSec=5
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/dia2epub
+# Outbound HTTPS to reader.dia.hu must work
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+
+[Install]
+WantedBy=multi-user.target

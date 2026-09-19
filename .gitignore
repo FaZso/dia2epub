@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Test / local output
+*.epub
+!deploy/**/*.epub
+
+# Archives (regenerate from deploy/)
+dia2epub-deploy.zip
+
+# Secrets / local env
+.env
+*.env
+!deploy/dia2epub.env.example
+/etc/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~
+
+# Logs
+*.log
+/tmp/
+gh
